@@ -1,0 +1,81 @@
+sudo apt-get install mysql-server python-mysqldb
+mysql -u root -p
+password : admin
+CREATE DATABASE employee
+
+Query OK, 0 rows affected, 1 warning (0.027 sec)
+
+USE employee
+
+CREATE TABLE employee
+( EnterTime bigint(20),
+  LeftTime bigint(20),
+  USN varchar(15),
+  Name varchar(50),
+  CONSTRAINT suppliers_pk PRIMARY KEY (USN)
+);
+Query OK, 0 rows affected, 1 warning (0.027 sec)
+
+
+desc employee
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EnterTime | bigint(20)  | NO   |     | NULL    |       |
+| LeftTime  | bigint(20)  | NO   |     | NULL    |       |
+| USN       | varchar(15) | NO   | PRI | NULL    |       |
+| Name      | varchar(50) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+INSERT INTO employee (EnterTime,LeftTime,USN,Name) VALUES (2454563,645648,575673543030,NULL);
+INSERT INTO employee (EnterTime,LeftTime,USN,Name) VALUES (2454563,645648,31269288689,NULL);
+INSERT INTO employee (EnterTime,LeftTime,USN,Name) VALUES (2454563,645648,3163615936,NULL);
+INSERT INTO employee (EnterTime,LeftTime,USN,Name) VALUES (2454563,645648,513441888771,NULL);
+INSERT INTO employee (EnterTime,LeftTime,USN,Name) VALUES (2454563,645648,650614635057,NULL);
+INSERT INTO employee (EnterTime,LeftTime,USN,Name) VALUES (2454563,645648,855533255245,NULL);
+INSERT INTO employee (EnterTime,LeftTime,USN,Name) VALUES (2454563,645648,1148060504223,NULL);
+
+
+
+select *from employee;
++-----------+----------+--------------+------+
+| EnterTime | LeftTime | USN          | Name |
++-----------+----------+--------------+------+
+|   2454563 |   645648 | 575673543030 | NULL |
++-----------+----------+--------------+------+
+
+UPDATE employee set Name='Dhanraj' where USN=575673543030;
+Query OK, 1 row affected (0.010 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+select *from employee;
++-----------+----------+--------------+---------+
+| EnterTime | LeftTime | USN          | Name    |
++-----------+----------+--------------+---------+
+|   2454563 |   645648 | 575673543030 | Dhanraj |
++-----------+----------+--------------+---------+
+
+UPDATE employee set Name='Dhanraj' where USN=575673543030;
+UPDATE employee set Name='Mukesh' where USN=31269288689;
+UPDATE employee set Name='Lakshya' where USN=3163615936;
+UPDATE employee set Name='Gagandeep' where USN=513441888771;
+UPDATE employee set Name='Vikas' where USN=650614635057;
+UPDATE employee set Name='Gowri' where USN=855533255245;
+UPDATE employee set Name='Abhilash' where USN=1148060504223;
+
+
+MariaDB [employee]> select *from employee;
++-----------+----------+---------------+-----------+
+| EnterTime | LeftTime | USN           | Name      |
++-----------+----------+---------------+-----------+
+|   2454563 |   645648 | 1148060504223 | Abhilash  |
+|   2454563 |   645648 | 31269288689   | Mukesh    |
+|   2454563 |   645648 | 3163615936    | Lakshya   |
+|   2454563 |   645648 | 513441888771  | Gagandeep |
+|   2454563 |   645648 | 575673543030  | Dhanraj   |
+|   2454563 |   645648 | 650614635057  | Vikas     |
+|   2454563 |   645648 | 855533255245  | Gowri     |
++-----------+----------+---------------+-----------+
+7 rows in set (0.001 sec)
+
+
